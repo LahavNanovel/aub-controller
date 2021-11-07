@@ -1,0 +1,19 @@
+int PIN_NUMBER = 4;
+byte PIN_STATE = LOW;
+
+void setup() {
+  pinMode(PIN_NUMBER, OUTPUT);
+  Serial.begin(9600);
+}
+
+void loop() {
+  if (Serial.available() > 0) {
+    byte input = Serial.read();
+    if (input == '0') {
+      PIN_STATE = LOW;
+    } else {
+      PIN_STATE = HIGH;
+    }
+    digitalWrite(PIN_NUMBER, PIN_STATE);
+  }
+}
